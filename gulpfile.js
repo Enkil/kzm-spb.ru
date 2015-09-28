@@ -68,6 +68,12 @@ var pathTo = {
         }
 };
 
+/* GitHub Pages options*/
+var ghpOptions = {
+    remoteUrl: "git@github.com:Enkil/kzm-spb.ru.git"
+    //branch: "master"
+    };
+
 /* Browser versions for automatically prefix */
 var autoprefixerBrowsers = ['last 3 versions', '> 1%', 'Firefox ESR'];
 
@@ -245,12 +251,12 @@ gulp.task('bower', function () {
 
 /* GitHub Pages */
 gulp.task('gh-pages', function() {
-    return gulp.src(pathTo.src.GHPages)
+    return gulp.src(pathTo.Src.GHPages)
         .pipe(plumber(function(error) {
             gutil.log(gutil.colors.red(error.message));
             this.emit('end');
         }))
-        .pipe(ghPages());
+        .pipe(ghPages(ghpOptions));
 });
 
 /* BrowserSync local web server*/
@@ -304,12 +310,9 @@ gulp.task('build', function(callback) {
         'jade',
         'bower',
         'js',
-        //'svg-sprite',
         'png-sprite',
         'images',
-        //'svg',
         'sass',
         'txt',
-        //'gh-pages',
         callback)
 });
