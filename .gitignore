@@ -29,7 +29,6 @@ Temporary Items
 *.bak
 ### NetBeans template
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
