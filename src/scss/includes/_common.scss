@@ -1,0 +1,35 @@
+// breakpoints
+$mq-breakpoints: (
+        mobile:  320px,
+        tablet:  740px,
+        desktop: 980px,
+        wide:    1300px
+);
+
+.site{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  width: 950px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  flex-grow: 1;
+  &--header{
+    flex: 0 0 950px;
+  }
+}
+
+// For Fade effect
+.is-hidden{
+  display: none!important;
+  opacity: 0;
+}
+.is-visible{
+  display: block !important;
+  opacity: 1;
+}
