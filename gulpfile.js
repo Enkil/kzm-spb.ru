@@ -26,12 +26,10 @@ var gulp = require('gulp'),
     // Common
     del = require('del'),
     sourcemaps = require('gulp-sourcemaps'),
-    streamqueue = require('streamqueue'),
     newer = require('gulp-newer'),
     gulpFilter = require('gulp-filter'),
     concat = require('gulp-concat'),
     gutil = require('gulp-util'),
-    order = require('gulp-order'),
     mainBowerFiles = require('main-bower-files'),
     rename = require('gulp-rename'),
     ghPages = require('gulp-gh-pages'),
@@ -273,8 +271,8 @@ gulp.task('webserver', function () {
 });
 
 /* Clean build directory */
-gulp.task('clean', function (cb) {
-    del(pathTo.Build.Clean, cb);
+gulp.task('clean', function () {
+    del(pathTo.Build.Clean);
 });
 
 /**
@@ -327,6 +325,8 @@ gulp.task('build', function(callback) {
         'png-sprite',
         'images',
         'sass',
+        'fonts',
         'txt',
+        //'gh-pages',
         callback)
 });
