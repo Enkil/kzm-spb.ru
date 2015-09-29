@@ -142,11 +142,9 @@
 }
 
 .news{
-  padding-left: 0;
   padding-bottom: 35px;
   margin-bottom: 34px;
   border-bottom: 1px solid $color-bottom-line;
-
   &__all{
     color: $color-news-item__link;
     position: relative;
@@ -165,6 +163,13 @@
       background-color: $color-bg-news-all-marker;
     }
   }
+}
+
+.news-list{
+  padding-left: 0;
+  //padding-bottom: 35px;
+  //margin-bottom: 34px;
+  //border-bottom: 1px solid $color-bottom-line;
 }
 
 .news-item{
