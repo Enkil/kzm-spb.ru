@@ -870,9 +870,9 @@ html
     color: #ca0e00;
 
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 45px;
-        -ms-flex: 0 0 45px;
-            flex: 0 0 45px;
+    -webkit-flex: 0 0 65px;
+        -ms-flex: 0 0 65px;
+            flex: 0 0 65px;
 }
 .news-item__anons
 {
@@ -906,7 +906,7 @@ html
 .news-item__link
 {
     margin-bottom: 30px;
-    margin-left: 90px; 
+    margin-left: 110px; 
 
     color: #5a92b1;
 }
