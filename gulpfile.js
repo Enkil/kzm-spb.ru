@@ -19,6 +19,10 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     spritesmith = require('gulp.spritesmith'),
+    // SVG
+    svg2png = require('gulp-svg2png'),
+    svgmin = require('gulp-svgmin'),
+    svgspritesheet = require('gulp-svg-spritesheet'),
     // JavaScript
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
@@ -52,7 +56,10 @@ var pathTo = {
             JSCustom: ['functions/**/*.js', 'main.js'],
             CSSVendor: 'src/scss/vendor/',
             Txt: ['src/humans.txt', 'src/robots.txt'],
-            Fonts: 'src/scss/fonts/**/*'
+            Fonts: 'src/scss/fonts/**/*',
+            Svg: ['src/svg/**/*.*', '!src/svg/sprite/*.*'],
+            SvgSprite: 'src/svg/sprite/**/*.svg',
+            SvgSpriteTpl: 'src/scss/includes/_svg-sprite-sass.tpl'
         },
         Build: {
             Styles: 'build/css',
@@ -64,7 +71,11 @@ var pathTo = {
             JSCustom: 'build/js/custom',
             Txt: 'build/',
             Clean: ['build/**/*', '!build/.gitignore'],
-            Fonts: 'build/css/fonts'
+            Fonts: 'build/css/fonts',
+            Svg: 'build/svg',
+            SvgSprite: 'build/svg/sprite/svg-sprite.svg',
+            SvgSpriteNoSvg: 'build/svg/sprite/svg-sprite.png',
+            SvgSpriteCSS: 'src/scss/includes/_svg-sprite.scss'
         }
 };
 
@@ -182,6 +193,43 @@ gulp.task('png-sprite', function () {
         .pipe(reload({stream: true}));
 });
 
+/* SVG */
+gulp.task('svg', function () {
+    return gulp.src(pathTo.Src.Svg)
+        .pipe(plumber(function(error) {
+            gutil.log(gutil.colors.red(error.message));
+            this.emit('end');
+        }))
+        .pipe(newer(pathTo.Build.Svg))
+        .pipe(svgmin())
+        .pipe(gulp.dest(pathTo.Build.Svg))
+        .pipe(reload({stream: true}));
+});
+
+/* SVG sprite */
+gulp.task('svg-sprite', function () {
+    gulp.src(pathTo.Src.SvgSprite)
+        .pipe(plumber(function(error) {
+            gutil.log(gutil.colors.red(error.message));
+            this.emit('end');
+        }))
+        .pipe(newer(pathTo.Build.SvgSprite))
+        .pipe(svgspritesheet({
+            cssPathNoSvg: '../svg/sprite/svg-sprite.png',
+            cssPathSvg: '../svg/sprite/svg-sprite.svg',
+            padding: 1,
+            pixelBase: 16,
+            positioning: 'packed',
+            templateSrc: pathTo.Src.SvgSpriteTpl,
+            templateDest: pathTo.Build.SvgSpriteCSS,
+            units: 'rem'
+        }))
+        .pipe(svgmin())
+        .pipe(gulp.dest(pathTo.Build.SvgSprite))
+        .pipe(svg2png())
+        .pipe(gulp.dest(pathTo.Build.SvgSpriteNoSvg));
+});
+
 /* JavaScript */
 gulp.task('js', function () {
     var customJS = gulpFilter(pathTo.Src.JSCustom, {restore: true}),
@@ -251,6 +299,11 @@ gulp.task('bower', function () {
 /* Fonts */
 gulp.task('fonts', function() {
     return gulp.src(pathTo.Src.Fonts)
+        .pipe(plumber(function(error) {
+            gutil.log(gutil.colors.red(error.message));
+            this.emit('end');
+        }))
+        .pipe(newer(pathTo.Build.Fonts))
         .pipe(gulp.dest(pathTo.Build.Fonts))
         .pipe(reload({stream: true}));
 });
@@ -324,9 +377,15 @@ gulp.task('build', function(callback) {
         'js',
         'png-sprite',
         'images',
-        'sass',
+        'svg',
+        'svg-sprite',
         'fonts',
+        'sass',
         'txt',
-        //'gh-pages',
+        'gh-pages',
         callback)
+});
+
+/* Default */
+gulp.task('default', ['watch'], function() {
 });

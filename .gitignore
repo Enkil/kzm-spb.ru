@@ -35,6 +35,7 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/
+/.publish
 ### Sass template
 .sass-cache/
 *.css.map

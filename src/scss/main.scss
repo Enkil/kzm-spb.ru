@@ -9,6 +9,7 @@
 **/
 @import "includes/variables";
 @import "includes/png-sprite";
+@import "includes/svg-sprite";
 @import "includes/typography";
 @import "includes/mixins";
 @import "includes/common";
@@ -224,6 +225,41 @@
   }
 }
 
+.contacts{
+  background-image: url('../img/bgContacts.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 209px;
+  width: 100%;
+  height: 209px;
+  position: absolute;
+  right: -85px;
+  padding-top: 55px;
+  padding-left: 80px;
+  &__address{
+    color: $color-contacts;
+  }
+  &__phone{
+    color: $color-contacts;
+    margin-top: 20px;
+  }
+  &__phone-prefix{
+    color: $color-phone-prefix;
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  &__phone-number{
+    font-size: 1.83rem;
+    color: $color-phone-number;
+  }
+  &__link{
+    color: $color-contacts;
+    margin-top: 22px;
+    display: inline-block;
+    margin-left: 15px;
+  }
+}
+
+// Footer
 .footer-wrapper{
   padding-bottom: 20px;
   background-color: $color-footer-bg;
@@ -283,38 +319,4 @@
   position: relative;
   margin-top: 45px;
   height: 209px;
-}
-
-.contacts{
-  background-image: url('../img/bgContacts.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 209px;
-  width: 100%;
-  height: 209px;
-  position: absolute;
-  right: -85px;
-  padding-top: 55px;
-  padding-left: 80px;
-  &__address{
-    color: $color-contacts;
-  }
-  &__phone{
-    color: $color-contacts;
-    margin-top: 20px;
-  }
-  &__phone-prefix{
-    color: $color-phone-prefix;
-    font-size: 1.5rem;
-    margin-right: 10px;
-  }
-  &__phone-number{
-    font-size: 1.83rem;
-    color: $color-phone-number;
-  }
-  &__link{
-    color: $color-contacts;
-    margin-top: 22px;
-    display: inline-block;
-    margin-left: 15px;
-  }
 }
