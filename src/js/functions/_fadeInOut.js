@@ -41,7 +41,7 @@ function fadeMenu(item, subitem, classname){
         subitems = document.querySelectorAll(subitem);
 
     for (var i = 0; i < items.length; i++) {
-        items[i].addEventListener('click', function(e){
+        items[i].addEventListener('click', function(event){
 
             event.preventDefault();
 

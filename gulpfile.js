@@ -53,7 +53,8 @@ var pathTo = {
             BowerJSVendor: 'src/js/vendor/',
             JSCustom: ['functions/**/*.js', 'main.js'],
             CSSVendor: 'src/scss/vendor/',
-            Txt: ['src/humans.txt', 'src/robots.txt']
+            Txt: ['src/humans.txt', 'src/robots.txt'],
+            Fonts: 'src/scss/fonts/**/*'
         },
         Build: {
             Styles: 'build/css',
@@ -64,7 +65,8 @@ var pathTo = {
             JSVendor: 'build/js',
             JSCustom: 'build/js/custom',
             Txt: 'build/',
-            Clean: ['build/**/*', '!build/.gitignore']
+            Clean: ['build/**/*', '!build/.gitignore'],
+            Fonts: 'build/css/fonts'
         }
 };
 
@@ -79,14 +81,13 @@ var autoprefixerBrowsers = ['last 3 versions', '> 1%', 'Firefox ESR'];
 
 /* BrowserSync local web server settings */
 var config = {
-    server: {
-        baseDir: "./build"
-    },
+    server: './build',
+    baseDir: './build',
     tunnel: true,
     host: 'localhost',
     port: 9000,
     injectChanges: true,
-    logPrefix: "App Front-End"
+    logPrefix: "Template Front-End"
 };
 
 /*********/
@@ -249,6 +250,13 @@ gulp.task('bower', function () {
         .pipe(reload({stream: true}));
 });
 
+/* Fonts */
+gulp.task('fonts', function() {
+    return gulp.src(pathTo.Src.Fonts)
+        .pipe(gulp.dest(pathTo.Build.Fonts))
+        .pipe(reload({stream: true}));
+});
+
 /* GitHub Pages */
 gulp.task('gh-pages', function() {
     return gulp.src(pathTo.Src.GHPages)
@@ -269,7 +277,9 @@ gulp.task('clean', function (cb) {
     del(pathTo.Build.Clean, cb);
 });
 
-/* Watchers */
+/**
+ * Watchers
+ * */
 gulp.task('sass:watch', function () {
     gulp.watch(pathTo.Src.Styles, ['sass']);
 });
@@ -291,9 +301,12 @@ gulp.task('txt:watch', function () {
 gulp.task('js:watch', function () {
     gulp.watch(pathTo.Src.JS, ['js']);
 });
+gulp.task('fonts:watch', function () {
+    gulp.watch(pathTo.Src.Fonts, ['fonts']);
+});
 
 /* Main watcher */
-gulp.task('watch', function() {
+gulp.task('watch', ['webserver'],function() {
     gulp.watch(pathTo.Src.Styles, ['sass']);
     gulp.watch(pathTo.Src.Jade, ['jade']);
     gulp.watch(pathTo.Src.Images, ['images']);
@@ -301,6 +314,7 @@ gulp.task('watch', function() {
     gulp.watch('bower.json', ['bower']);
     gulp.watch(pathTo.Src.Txt, ['txt']);
     gulp.watch(pathTo.Src.JS, ['js']);
+    gulp.watch(pathTo.Src.Fonts, ['fonts']);
 });
 
 /* Build */
