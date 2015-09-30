@@ -615,11 +615,11 @@ html
 }
 .header__logo
 {
-    width: 403px;
-    height: 100px; 
+    width: 402px;
+    height: 83px; 
 
-    background-image: url(../img/logo.png);
-    background-size: 403px 100px;
+    background-image: url(../img/logo-clear.png);
+    background-size: 402px 83px;
 }
 
 .aside
