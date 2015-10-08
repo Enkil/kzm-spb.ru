@@ -21,6 +21,12 @@ html {
   line-height: $line-height;
 }
 
+.h1{
+  @include font-ArialBold(2.5rem,2.3rem);
+  color: $color-content__h2;
+  margin-top: 8px;
+}
+
 .h2{
   @include font-ArialBold(2.5rem,2.3rem);
   color: $color-content__h2;
