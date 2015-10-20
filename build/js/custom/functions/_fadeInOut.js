@@ -37,29 +37,29 @@ function fadeIn(el, classname, display){
 
 // Add events to submenu
 function fadeMenu(item, subitem, classname){
-    var items = document.querySelectorAll(item),
-        subitems = document.querySelectorAll(subitem);
+    var items = document.querySelectorAll(item), // .js-menu-item
+        subitems = document.querySelectorAll(subitem); // .js-fade
 
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function(event){
 
             event.preventDefault();
 
-            var el = this.querySelector(subitem);
 
-            // Find and set invisible all subelements
-            for (var n = 0; n < subitems.length; n++) {
-                subitems[n].classList.add(classname);
-            }
+                var el = this.querySelector(subitem);
 
-            // Set current subitem visible
-            if(el.classList.contains(classname)){
-                fadeIn(el, classname);
-            }
-            else {
-                fadeOut(el, classname);
-            }
+                // Find and set invisible all subelements
+                for (var n = 0; n < subitems.length; n++) {
+                    subitems[n].classList.add(classname);
+                }
 
-        });
+                // Set current subitem visible
+                if(el.classList.contains(classname)){
+                    fadeIn(el, classname);
+                }
+
+            else {console.info('else')}
+
+        })
     }
 }
