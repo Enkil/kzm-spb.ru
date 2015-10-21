@@ -1,3 +1,6 @@
+/**
+* START OFF: AstraMediaGroup Outdate browsers modal
+**/
 @mixin amg-outdate-transition($time:.5s) {
   transition: all .5s ease;
 }
@@ -173,3 +176,6 @@
     }
   }
 }
+/**
+* END OFF: AstraMediaGroup Outdate browsers modal
+**/

@@ -620,6 +620,9 @@ html
     opacity: 1;
 }
 
+/**
+* START OFF: AstraMediaGroup Outdate browsers modal
+**/
 [class^='amg-']
 {
     box-sizing: border-box;
@@ -844,6 +847,9 @@ html
     color: #414041;
 }
 
+/**
+* END OFF: AstraMediaGroup Outdate browsers modal
+**/
 /**
 * Styles
 */
