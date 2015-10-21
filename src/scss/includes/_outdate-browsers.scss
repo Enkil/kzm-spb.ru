@@ -1,0 +1,175 @@
+@mixin amg-outdate-transition($time:.5s) {
+  transition: all .5s ease;
+}
+
+[class^="amg-"]{
+  box-sizing: border-box;
+}
+
+.amg-outdate-modal-opened{
+  height: 100% !important;
+  overflow: hidden;
+}
+
+.amg-outdate-wrapper{
+  //display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  background-color: $amg-color-wrapper-bgc;
+  z-index: 10000;
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.amg-outdate{
+  width: 960px;
+  height: 600px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $amg-color-modal-bgc;
+  background-image: url('../img/amg-outdate-bg-car.png');
+  background-repeat: no-repeat;
+  background-size: 960px 600px;
+  padding-top: 56px;
+  padding-left: 85px;
+  padding-right: 95px;
+  padding-bottom: 50px;
+
+  &__title{
+    @include font-family('Roboto-Regular');
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 54px;
+    letter-spacing: 0.02em;
+    color: $amg-color-title;
+    margin-top: 0;
+    margin-bottom: 45px;
+  }
+  &__title-more{
+    color: $amg-color-title-more;
+  }
+  &__text{
+    @include font-family('Roboto-Thin');
+    font-size: 13px;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+    margin-top: 0;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  &__close{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 23px;
+    height: 23px;
+    background-color: transparent;
+    border: 0;
+    appearance: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    outline: none;
+    background-image: url('../img/amg-outdate-cross.png');
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+    & .amg-cross{
+      @include amg-outdate-transition();
+      fill: $amg-color-cross;
+    }
+    &:hover .amg-cross{
+      fill: $amg-color-cross--hover;
+    }
+    &:hover{
+      background-image: url('../img/amg-outdate-cross--hover.png');
+    }
+  }
+  &__browsers-stack{
+    //display: flex;
+    //justify-content: space-between;
+    //display: block;
+    display: table;
+    width: 100%;
+    //margin-top: 45px;
+    position: relative;
+  }
+  &__browser{
+    @include amg-outdate-transition();
+    width: 124px;
+    height: 144px;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    //flex-wrap: wrap;
+    //display: inline-block;
+    display: table-cell;
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    font-size: 0;
+    text-align: center;
+    vertical-align: middle;
+    &:hover{
+      box-shadow: 0 0 20px $amg-color-browser--hover-shadow;
+    }
+    &--isUsed{
+      width: 168px;
+      height: 188px;
+      position: relative;
+      //top: -22px;
+      & .amg-outdate__browser-logo{
+        width: 113px;
+        height: 108px;
+      }
+    }
+  }
+  &__browser-logo{
+    width: 77px;
+    height: 77px;
+    //width: 113px;
+    //height: 108px;
+    //width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+  &__browser-name{
+    @include font-family('Roboto-Light');
+    color: $amg-color-browser-name;
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  &__btn-thx{
+    @include font-family('Roboto-Bold');
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: $amg-color-btn-thx;
+    margin: 0 auto;
+    margin-top: 17px;
+    display: block;
+    position: relative;
+    //top: -22px;
+    &:hover{
+      @include amg-outdate-transition();
+      color: $amg-color-btn-thx--hover;
+    }
+  }
+}

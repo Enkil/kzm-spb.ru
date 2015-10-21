@@ -1,0 +1,41 @@
+// AstraMediaGroup Outdate browsers modal
+div(role="alert").amg-outdate-wrapper#amg-outdate-wrapper
+    section(role="article").amg-outdate
+        button(role='button' aria-label='Close' title='Закрыть').amg-outdate__close#amg-outdate__close
+            svg(id="layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.4 21.4").
+                <style>
+                    .amg-cross{fill-rule:evenodd;
+                    clip-rule:evenodd;}
+                </style>
+                <path class="amg-cross" d="M20.7 0l.7.7L.8 21.4l-.7-.7L20.7 0z"/>
+                <path class="amg-cross" d="M.7 0L0 .7l20.6 20.6.7-.7L.7 0z"/>
+        h2.amg-outdate__title Ваш браузер
+            span.amg-outdate__title-more  может больше
+        p.amg-outdate__text Команда Astra Media Group постаралась сделать сайт <br> удобным, понятным и красивым.
+        p.amg-outdate__text Однако используемая вами версия браузера <br> может неправильно отображать сайты <br> и портить вам удовольствие от работы.
+        p.amg-outdate__text Установите более современный браузер. <br> Это бесплатно и займет всего пару минут.
+        p.amg-outdate__text После этого вы заметите, что интернет стал лучше!
+        .amg-outdate__browsers-stack
+            a(href='https://www.google.ru/chrome/browser/desktop/' target='_blank' title='Установите последнюю версию браузера Google Chrome' data-browser='chrome').amg-outdate__browser
+                img(src='img/chrome-logo.png' alt='Установите последнюю версию браузера Google Chrome').amg-outdate__browser-logo
+                span.amg-outdate__browser-name Chrome
+            a(href='http://www.opera.com/ru' target='_blank' title='Установите последнюю версию браузера Opera' data-browser='opera').amg-outdate__browser
+                img(src='img/opera-logo.png' alt='Установите последнюю версию браузера Opera').amg-outdate__browser-logo
+                span.amg-outdate__browser-name Opera
+            a(href='http://windows.microsoft.com/ru-ru/internet-explorer/download-ie' target='_blank' title='Установите последнюю версию браузера Microsoft Internet Explorer' data-browser='msie').amg-outdate__browser
+                img(src='img/explorer-logo.png' alt='Установите последнюю версию браузера Microsoft Internet Explorer' style='width').amg-outdate__browser-logo
+                span.amg-outdate__browser-name IE/Edge
+            a(href='https://www.mozilla.org/ru/firefox/new/' target='_blank' title='Установите последнюю версию браузера Mozilla Firefox' data-browser='mozilla').amg-outdate__browser
+                img(src='img/firefox-logo.png' alt='Установите последнюю версию браузера Mozilla Firefox').amg-outdate__browser-logo
+                span.amg-outdate__browser-name Firefox
+            a(href='https://support.apple.com/downloads/safari' target='_blank' title='Установите последнюю версию браузера Apple Safari' data-browser='safari').amg-outdate__browser
+                img(src='img/safari-logo.png' alt='Установите последнюю версию браузера Apple Safari').amg-outdate__browser-logo
+                span.amg-outdate__browser-name Safari
+        button(role='button' title='Закрыть').amg-outdate__btn-thx#amg-outdate__btn-thx Спасибо, меня все устраивает
+        // AstraMediaGroup Outdate browsers modal scripts
+        script
+            include ../../js/toHead/detectBrowser.js
+            include ../../js/toHead/ifIE7querySelector.js
+            include ../../js/toHead/getOutDateBrowserLink.js
+            include ../../js/toHead/buildBrowserStack.js
+            include ../../js/toHead/closeAMGOutdateBrowserModal.js
