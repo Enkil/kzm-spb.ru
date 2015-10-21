@@ -58,7 +58,7 @@ function fadeMenu(item, subitem, classname){
                     fadeIn(el, classname);
                 }
 
-            else {console.info('else')}
+            else {console.info('else');}
 
         })
     }
